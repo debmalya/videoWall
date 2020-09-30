@@ -25,6 +25,11 @@ public class StageListener implements ApplicationListener<StageReadyEvent> {
     private VLCGrid vlcGrid;
     private final int height;
     private final int width;
+    
+    @Value("${videowall.rows:4}")
+    private int rows;
+    @Value("${videwall.columns:2}")
+    private int columns;
 
 
     private final URLProviderService urlProviderService;
@@ -70,8 +75,8 @@ public class StageListener implements ApplicationListener<StageReadyEvent> {
         for (int i = 0; i < VideoWallConstants.NO_OF_VIDEOS; i++) {
             pages[i] = vlcGrid.getVlcComponents()[i].getVideoImageView();
             vlcGrid.getVlcComponents()[i].getEmbeddedMediaPlayer().media().play(urlProviderService.getUrls().get(i));
-            pages[i].setFitWidth(width / 2);
-            pages[i].setFitHeight(height / 4);
+            pages[i].setFitWidth(width / columns);
+            pages[i].setFitHeight(height / rows);
             flow.getChildren().add(pages[i]);
         }
 
