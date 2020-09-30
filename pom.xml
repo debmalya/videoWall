@@ -11,8 +11,8 @@
 	<groupId>com.example</groupId>
 	<artifactId>javafx</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>javafx</name>
-	<description>Demo project for Spring Boot</description>
+	<name>videoWall</name>
+	<description>VLCJ project with Spring Boot and JavaFX</description>
 
 	<properties>
 		<java.version>11</java.version>
