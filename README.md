@@ -31,8 +31,9 @@ curl -X POST -H 'Content-Type: application/json' -i http://localhost:1971/api/v1
 ![Screen after changing first video](./doc/AfterChangingFirstVideo.PNG)
 
 ## Publicly available RTSP URL for testing
-*
-*
-* 
+* rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov
+* rtsp://freja.hiof.no:1935/rtplive/_definst_/hessdalen03.stream
+* rtsp://170.93.143.139/rtplive/470011e600ef003a004ee33696235daa
+
 # Motivation
 [Sprint tips for JavaFX and spring boot](https://spring.io/blog/2019/01/16/spring-tips-javafx)
