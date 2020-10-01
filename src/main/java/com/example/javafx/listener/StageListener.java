@@ -28,7 +28,7 @@ public class StageListener implements ApplicationListener<StageReadyEvent> {
     
     @Value("${videowall.rows:4}")
     private int rows;
-    @Value("${videwall.columns:2}")
+    @Value("${videowall.columns:2}")
     private int columns;
 
 

@@ -21,7 +21,7 @@ public class URLProviderService {
                     break;
 
                 default:
-                    urls.add("rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov");
+                    urls.add("rtsp://170.93.143.139/rtplive/470011e600ef003a004ee33696235daa");
                     break;
             }
         }

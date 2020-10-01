@@ -27,7 +27,9 @@ public class VideoController {
         }
         APIResponse apiResponse = new APIResponse();
         try {
-            urlChangerService.changeURL(videoChangeRequest.getVideoIndex(),videoChangeRequest.getUrl());
+            urlChangerService.changeURL(videoChangeRequest.getVideoIndex(),
+            		videoChangeRequest.getUrl(),
+            		videoChangeRequest.getCaption());
             apiResponse.setStatus("OK");
             apiResponse.setErrorCode("");
             apiResponse.setErrorMessage("");

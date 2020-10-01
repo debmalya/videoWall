@@ -12,6 +12,7 @@ public class VideoDTORequest {
     @NonNull
     private String url;
     private String title;
-    @NonNull
+    
     private int videoIndex;
+    private String caption;
 }
