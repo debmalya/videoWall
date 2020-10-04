@@ -1,9 +1,15 @@
 package com.example.javafx.listener;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationListener;
+import org.springframework.core.io.Resource;
+import org.springframework.stereotype.Component;
+
 import com.example.javafx.component.VLCGrid;
-import com.example.javafx.constants.VideoWallConstants;
 import com.example.javafx.event.StageReadyEvent;
 import com.example.javafx.service.URLProviderService;
+
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
@@ -11,11 +17,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationListener;
-import org.springframework.core.io.Resource;
-import org.springframework.stereotype.Component;
 
 @Component
 public class StageListener implements ApplicationListener<StageReadyEvent> {
@@ -29,7 +30,7 @@ public class StageListener implements ApplicationListener<StageReadyEvent> {
     @Value("${videowall.rows:4}")
     private int rows;
     @Value("${videowall.columns:2}")
-    private int columns;
+    private int cols;
 
 
     private final URLProviderService urlProviderService;
@@ -39,7 +40,8 @@ public class StageListener implements ApplicationListener<StageReadyEvent> {
                          ApplicationContext applicationContext,
                          VLCGrid vlcGrid,
                          @Value("${videowall.height:400}") int height,
-                         @Value("${videowall.width:300}") int width, URLProviderService urlProviderService) {
+                         @Value("${videowall.width:300}") int width, 
+                         URLProviderService urlProviderService) {
         this.applicationTitle = applicationTitle;
         this.fxml = fxml;
         this.applicationContext = applicationContext;
@@ -72,10 +74,11 @@ public class StageListener implements ApplicationListener<StageReadyEvent> {
         flow.setStyle("-fx-background-color: DAE6F3;");
 
         ImageView pages[] = new ImageView[8];
-        for (int i = 0; i < VideoWallConstants.NO_OF_VIDEOS; i++) {
+        int noOfVideos = rows * cols;
+        for (int i = 0; i < noOfVideos; i++) {
             pages[i] = vlcGrid.getVlcComponents()[i].getVideoImageView();
             vlcGrid.getVlcComponents()[i].getEmbeddedMediaPlayer().media().play(urlProviderService.getUrls().get(i));
-            pages[i].setFitWidth(width / columns);
+            pages[i].setFitWidth(width / cols);
             pages[i].setFitHeight(height / rows);
             flow.getChildren().add(pages[i]);
         }
